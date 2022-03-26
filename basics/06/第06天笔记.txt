@@ -1,0 +1,334 @@
+﻿函数类型
+-----------------
+type funcType（名字）  func（int ，int）int
+
+funcType==int  string
+
+var a int //a = 3
+var s string //s ="abc"
+
+var fTest funcType //fTest = Add
+
+func Add(a,b int) int{
+  return a+b
+}
+
+func Minus(a,b int) int{
+  return a-b
+}
+
+fTest = Minus
+
+resule =fTest(2,4) //2-4
+
+
+匿名函数
+-----------------------
+f:=func（）{
+
+  fmt.println("a","b")
+}
+
+f()
+
+func(){
+
+fmt.println("a","b")
+}()
+
+
+func(a,b int){
+  fmt.println(a,b)
+}(2,3)
+
+
+闭包
+-----------------
+闭包不关心这些捕获了的变量和常量是否已经超出了作用域，所以只要闭包还在使用它，这些变量就还会存在
+
+
+多个defer执行顺序
+-----------------------、
+如果一个函数中有多个defer语句，它们会以LIFO（后进先出）的顺序执行。
+哪怕函数或某个延迟调用发生错误，这些调用依旧会被执⾏。
+
+
+获取命令行参数
+------------------
+
+list := os.Args
+
+
+局部变量
+------------------
+定义在{}里面的变量就是局部变量，只能在{里面}有效，执行到定义变量的那句话，才开始分配空间，
+离开{}自动释放
+
+案例一：
+-------------------
+import (
+	"fmt"
+
+)
+
+func test()  {
+	 a := 1000
+	fmt.Println("a",a)
+}
+
+func test1(a int)  { //test1  b = a
+	a =2000
+	fmt.Println("a=",a)
+
+}
+
+func main(){
+	//定义在{}里面的变量就是局部变量，只能在{里面}有效，执行到定义变量的那句话，才开始分配空间，
+	//离开{}自动释放
+	a := 111
+	fmt.Println("a",a)
+
+	test1(a)
+
+	{
+		 b := 222
+		 fmt.Println("b",b)
+	}
+	fmt.Println("b=",b)
+
+	if flag := 3;flag==3{
+		fmt.Println("flag=",flag)
+	}
+
+	//fmt.Println("flag=",flag)
+}
+
+
+不同作用域
+-----------------------
+不同作用域，允许定义同名变量
+使用变量的原则，就近原则
+
+案例
+-------------------
+package main
+
+import "fmt"
+
+var aa byte //全局变量
+
+func main()  {
+	
+	 var aa int // 局部变量
+
+	 fmt.Printf("%T\n",aa)
+}
+
+
+
+
+案例二
+------------------
+package main
+
+import "fmt"
+
+var aa byte //全局变量
+
+
+func main()  {
+
+	 var aa int // 局部变量
+	// testaa()
+
+	fmt.Printf("%T\n",aa)
+
+	{
+		//不同作用域，允许定义同名变量
+		//使用变量的原则，就近原则
+		var aa float32
+		fmt.Printf("2222: %T\n",aa) //float32
+	}
+}
+
+func testaa()  {
+	fmt.Printf("444 %T\n",aa)
+}
+
+
+工程管理
+-----------------------
+源码 src
+对应的编译exe bin
+归档文件（临时产物 xxx.a） 
+
+gopath
+----------------
+go env 
+GOPATH=C:\onelineGo
+
+GOPATH是用户自己配置（我的电脑--->属性---->高级系统设置-----新建GOPATH）
+
+
+C:\Users\zhang>go env
+set GOARCH=amd64
+set GOBIN=
+set GOEXE=.exe
+set GOHOSTARCH=amd64
+set GOHOSTOS=windows
+set GOOS=windows
+set GOPATH=C:\onelineGo
+set GORACE=
+set GOROOT=C:\Go
+set GOTOOLDIR=C:\Go\pkg\tool\windows_amd64
+set GCCGO=gccgo
+set CC=gcc
+set GOGCCFLAGS=-m64 -mthreads -fmessage-length=0
+set CXX=g++
+set CGO_ENABLED=1
+set CGO_CFLAGS=-g -O2
+set CGO_CPPFLAGS=
+set CGO_CXXFLAGS=-g -O2
+set CGO_FFLAGS=-g -O2
+set CGO_LDFLAGS=-g -O2
+set PKG_CONFIG=pkg-config
+
+
+
+工作目录就会在gopath下面
+------------------------------
+src：包含所有go语言开发的源码
+pkg：用于存放由go install 命令创建安装后的代码包（临时文件）
+bin： go install 安装后生产的可执行文件
+
+pkg bin 不用创建 直接生产
+强调：如果用go install没有生产我们的bin目录解决方案
+-------------------------------------------- 
+1）自己创建bin pkg
+2）配置一个GOBIN（我的电脑-->属性--->高级系统设置-----新建GOBIN）
+GOBIN= $GOPATH(C:\onelineGo)\bin
+
+配置多个gopath
+---------------------
+go get 获取我们的代码，默认选择第一个gopath
+
+
+go get下载代码 （如果用go get下载不了源码 需要安装git）
+------------------------
+>go get github.com/astaxie/beego 保存到gopath 下面的github.com
+
+
+
+所有import 路径 必须通过gopath下面
+----------------------------------------
+main.go:4:8: cannot find package "test1" in any
+        C:\Go\src\test1 (from $GOROOT)
+        C:\onelineGo\src\test1 (from $GOPATH)
+
+
+工程管理 包
+相同目录
+-----------------
+程序代码太别多 我们会根据功能划分不同包，
+每个包下面的文件 导入package 名字一定一致
+同一个目录下面，调用别的文件的函数，直接调用即可，无须包名引用，不区分方法的大小写
+，
+
+
+不同目录
+---------------------
+1）不同目录 ，包名不一致
+2）调用不同包名里面的函数，格式包名.函数名（aboutmysql.OpenDatabases()）
+3）调用别的包的函数，这个函数名字首先字母如果是小写无法调用，要想让别人调用 必须大写
+
+//大写public  小写 private
+
+
+导入包
+------------------
+1)导入包一定要使用，如果不使用就会报错
+2）想导入包 不使用他 也不让他报错 _
+
+
+//_ 忽略此包
+import _ "fmt"
+//给导入包起一个别名
+import io "fmt"
+//无须通过包名调用，不建议这样操作
+/*import  "fmt"
+import  "os"*/
+
+import (
+	"fmt"
+	"os"
+)
+
+func main()  {
+	//fmt.Println("aaaa")
+	io.Printf("aaaaa")
+	fmt.Printf("bbbbbb")
+	fmt.Println(os.Args)
+}
+
+
+init
+----------------------
+当一个包被导入时，如果该包还导入了其它的包，
+那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，
+接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，
+就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），
+最后执行main函数。下图详细地解释了整个执行过程：
+
+---------------------------------------
+案例
+-----------------
+package main
+
+import (
+	"fmt"
+
+	_ "LearnGoOnline/calc"
+)
+//不需要用户来调用，系统自己调用 main之前
+func init()  {
+  fmt.Println("init 做配置文件初始化操作")
+}
+
+func main()  {
+
+	//TestPrint()
+	//OpenDatabases()
+	//aboutmysql.OpenDatabases()
+  // a :=calc.Add(2,3)
+  // fmt.Println(a)
+}
+
+/*
+func TestPrint()  {
+
+	fmt.Println("aaaaaaaa")
+	fmt.Println("aaaaaaaa")
+	fmt.Println("aaaaaaaa")
+	fmt.Println("aaaaaaaa")
+	fmt.Println("aaaaaaaa")
+
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

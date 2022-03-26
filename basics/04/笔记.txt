@@ -1,0 +1,322 @@
+函数(方法)
+-------------------------
+子弹
+
+按钮--->反射子弹
+按钮--->发射子弹
+按钮--->反射子弹
+按钮--->发射子弹
+按钮--->反射子弹
+按钮--->发射子弹
+按钮--->反射子弹
+按钮--->发射子弹
+
+函数（）{
+   反射子弹
+}
+
+
+按钮- 函数（）
+
+
+func fashezidan（）{
+  
+  fmt.Println("反射子弹")
+}
+
+
+备注
+-------------------
+func：函数由关键字 func 开始声明
+FuncName：函数名称，根据约定，函数名首字母小写即为private，大写即为public
+函数可以有0个或多个参数，参数格式为：变量名 类型，如果有多个参数通过逗号分隔，不支持默认参数
+
+
+无参无返回值
+-----------------
+//无参无返回值
+
+func MyFunction(){
+	b := "发射子弹"
+	fmt.Println(b)
+}
+
+func main()  {
+	//无参无返回值函数调用: 函数名()
+   MyFunction()
+   MyFunction()
+}
+
+
+普通函数调用
+--------------------------
+import "fmt"
+
+func MyFunc()  {
+	b := "发射子弹"
+	fmt.Println("b=",b)
+}
+
+func MyFunc01(a string)  { //a = "发射子弹" 形式参数
+	b := a
+	fmt.Println("b=",b)
+}
+
+func MyFunc02(a string,b int)  {
+  fmt.Printf("a=%s,b=%d",a,b)
+}
+
+func MyFunc03(a ,b int)  {
+	fmt.Printf("a=%d,b=%d",a,b)
+}
+
+func MyFunc04(a,b string,c int)  {
+
+}
+
+func MyFunc05(a,b string,c,d int)  {
+
+}
+
+func main()  {
+	MyFunc01("发射子弹") //实参
+	MyFunc01("发射导弹")//实参
+	MyFunc02("发射子弹",5) //在函数调用的时候，有几个值就传几个，是什么类型就传什么类型的
+}
+
+
+
+不定参数类型
+-----------------------
+
+args ...type(int string bool) 不定参数一定只能放在形参中的最后一个位置
+
+案例
+----------------------
+func MyFunc11(a int){
+
+}
+
+func MyFunc12(a,b int){
+
+}
+
+func MyFunc13(a,b,c int){
+
+}
+
+func MyFunc14(args ...int)  {//...int不定参数整形  ...type 不定参数类型
+  fmt.Println("len(args)=",len(args))
+
+  for i:=0;i<len(args);i++{
+  	fmt.Printf("args[%d]=%d\n",i,args[i])
+  }
+
+  fmt.Println("==========================")
+
+  for i,data := range args{ //第一个代表下标，第二个代表下标对应的值
+  	fmt.Printf("args[%d]=%d\n",i,data)
+  }
+
+}
+
+func MyFunc15(a int,args ...int)  {
+	fmt.Println("len(args)=",len(args))
+}
+
+/*func MyFunc16(args ...int,a string)  { //不定参数一定只能放在形参中的最后一个位置
+
+}*/
+
+
+func main(){
+	MyFunc15(1,2)
+}
+
+不定参数传递
+---------------------------
+func MyFunc111(temp ...int)  {
+   for _,data :=range temp{
+   	fmt.Printf("data=%d\n",data)
+   }
+}
+
+func test(args ...int){
+ // MyFunc111(args...)  //实参一定是args...
+  //MyFunc111(args[0:2]...) //args[0]~args[2](不包含数字args【2】)传递过去
+  //MyFunc111(args[:2]...)//args[0]~args[2](不包含数字args【2】)传递过去
+
+  MyFunc111(args[2:]...)//args[2]开始（包含args【2】本身，把后面所有的元素都传递过去）
+}
+
+func main(){
+  test(1,2,3,4,5,6)
+
+}
+
+一个返回值
+--------------------------
+
+func myFuncName()(a int){
+  return 666
+  
+} 
+
+有返回值必须有return
+
+
+案例一：
+----------------------
+//无参有返回值，只有一个返回值，通过return返回
+func myfunc01() int  {
+   return  5555
+}
+
+func main()  {
+	 var a int
+	 a = myfunc01()
+	 fmt.Println("a=",a)
+
+}
+
+
+案例二：
+---------------------
+//这种是官方推荐 给返回值起一个名字
+func myfunc02() (a int)  {
+   return 6666
+}
+//常用法
+func myfunc03() (a int)  {
+	a = 666
+	return
+}
+
+
+多个返回值案例
+------------------------
+import "fmt"
+
+func myfunc001()(int,int,int)  {
+  return 11,22,33
+}
+//go 推荐写法
+func myfunc002()(a int,b int,c int){
+	a,b,c =11,22,33
+	return
+}
+
+func myfunc003()(a ,b ,c int){
+	a,b,c =11,22,33
+	return
+}
+
+func main()  {
+    a,b,c := myfunc001()
+   // fmt.Printf("a=%d,b=%d,c=%d",a,b,c)
+    a,b,c = myfunc002()
+	fmt.Printf("a=%d,b=%d,c=%d",a,b,c)
+}
+
+
+判断2个数的大小
+---------------------------------
+func MaxAndMin(a,b int)(max,min int){
+   if a > b{
+     max = a
+     min = b
+  }else{
+
+    max = b
+    min = a
+ }
+
+ return 
+
+}
+
+
+
+案例
+------------------------
+//函数定义 比较俩个数的大小
+func MaxAndMin(a,b int)(max,min int){
+	if a > b{
+		max = a
+		min = b
+	}else{
+		max = b
+		min = a
+	}
+	return
+}
+
+
+func main()  {
+  max,min := MaxAndMin(10,15)
+  fmt.Printf("max=%d,min=%d\n",max,min)
+  //通过匿名变量丢弃某个返回值 _
+  a,_ :=MaxAndMin(10,15)
+  fmt.Printf("a=%d",a)
+
+	_,b :=MaxAndMin(10,15)
+	fmt.Printf("b=%d",b)
+}
+
+
+递归讲解
+----------------------
+import "fmt"
+
+func test1(a int)  {
+
+	if a == 1{ //函数的终止条件，非常重要
+		fmt.Println("a=",a)
+		return //终止条件
+	}
+	//函数调用本身
+	test1(a -1)
+	fmt.Println("a=",a)
+}
+
+func main()  {
+   test1(3)
+   fmt.Println("main")
+}
+
+
+
+递归案例
+--------
+import "fmt"
+
+func testSum(i int) int  {
+	if i == 1{
+		return  1
+	}
+
+	return  i+testSum(i-1)
+}
+
+func testSum1(i int) int  {
+	 if i==100{
+	 	return  100
+	 }
+	 return  i + testSum1(i+1)
+}
+
+func main()  {
+	var sum int
+	sum = testSum(100)
+	fmt.Println("sum=",sum)
+
+	sum = testSum1(1)
+	fmt.Println("sum=",sum)
+}
+
+
+
+
+
+
+

@@ -1,0 +1,184 @@
+函数类型
+------------------
+
+int byte 
+
+var a int
+var b byte
+
+
+func Add(a,b int) int{
+   return a+b
+}
+
+func Minus(a,b int)int{
+
+  return a-b
+}
+
+type FuncType func(a,b int) int
+
+
+
+func main(){
+ result := Add(3,5)
+
+ result = Minus(3,5)
+
+ var fTest FuncType
+
+ a = 10
+ fTest = Add
+ result = fTest(3,5)
+ fTest = Minus
+
+}
+
+函数类型案例
+--------------
+import "fmt"
+
+//通过type给一个函数类型起名 函数也是一种数据类型（int byte）
+type FuncType func(a,b int) int //没有名字 没有{}
+
+func Add(a,b int) int  {
+	return  a +b
+}
+
+func Minus(c,d int) int {
+	return c-d
+}
+
+func main()  {
+	var a int
+	 a = 10
+	 fmt.Println("a=",a)
+
+	 var fTest FuncType
+	 fTest =Add
+	 result := fTest(3,12) //等价于Add(3,12)
+	 fmt.Println("result=",result)
+
+	 fTest=Minus
+	 result = fTest(3,2) //等价于Minus（3,2）
+	 fmt.Println("result=",result)
+}
+
+
+defer和匿名函数一起使用
+----------------------------------
+
+defer延迟加载
+
+import "fmt"
+
+func main()  {
+	 a:=10
+	 b:=20
+
+	/*defer func(){
+	 	fmt.Printf("a=%d,b=%d\n",a,b)
+	 }()*/
+	defer func(a,b int){
+		fmt.Printf("a=%d,b=%d\n",a,b)
+	}(a,b) //(10,20) 代表调用此函数，把参数传递过去，已经先传递参数，只是没有调用
+
+
+	 a = 111
+	 b =  222
+	fmt.Printf("外部 a=%d,b=%d\n",a,b)
+}
+
+
+获取命令行参数
+--------------------
+运行方式---->cmd---go build 09获取命令行参数.go
+
+运行：
+09获取命令行参数.exe 10 20
+
+对应代码
+-------------------------
+import (
+	"os"
+	"fmt"
+)
+
+func main(){
+  list :=os.Args //接收用户传递参数，都是以字符串方式传递
+
+  n :=len(list)
+  fmt.Println("n=",n)
+
+  for i:=0;i<n;i++{
+  	 fmt.Printf("list[%d]=%s\n",i,list[i])
+  }
+
+  fmt.Println("-----------------------------")
+
+  for i,data := range list{
+  	fmt.Printf("list[%d]=%s\n",i,data)
+  }
+
+}
+
+
+闭包
+--------------------------
+匿名函数
+
+func aaa(){
+  fmt.println("aaaaaaa")
+}
+
+f1 :=func(){
+ fmt.println("aaaaaaa")
+}
+
+f1()
+
+func(){
+ fmt.println("aaaaaaa")
+}()
+
+
+func(a,b int){
+  fmt.println(a,b)
+}(10,20)
+
+
+defer 延迟加载
+
+
+defer fmt.Println("aaaaaaa")
+
+defer fmt.Println("bbbb")
+
+defer fmt.Println("ccccc")
+
+后进先出（先进后出原则）
+
+数据库操作 文件关闭 都是使用defer
+
+
+命令行获取
+------------------------
+os.Args
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
