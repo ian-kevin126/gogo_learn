@@ -16,7 +16,7 @@ func test1(a int) { //test1  b = a
 }
 
 func main() {
-	//定义在{}里面的变量就是局部变量，只能在{里面}有效，执行到定义变量的那句话，才开始分配空间，
+	//定义在{}里面的变量就是局部变量，只能在{}里面有效，执行到定义变量的那句话，才开始分配空间，
 	//离开{}自动释放
 	a := 111
 	fmt.Println("a", a)
@@ -27,11 +27,11 @@ func main() {
 		b := 222
 		fmt.Println("b", b)
 	}
-	//fmt.Println("b=",b)
+	//fmt.Println("b=",b)  // 在这里是访问不到的
 
 	if flag := 3; flag == 3 {
 		fmt.Println("flag=", flag)
 	}
 
-	//fmt.Println("flag=",flag)
+	//fmt.Println("flag=",flag) // 在这里也是访问不到的
 }
