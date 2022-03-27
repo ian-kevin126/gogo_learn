@@ -13,13 +13,14 @@ func newTask() {
 }
 
 func main() {
-	go newTask() //go 关键字就新建一个协程，新建一个任务
+	go newTask() // go 关键字就新建一个协程，新建一个任务
 
 	/*for{
 		fmt.Println("this is main goroutine")
 		time.Sleep(time.Second)
 	}*/
 	i := 0
+
 	for {
 		i++
 		fmt.Println("this is main goroutine")
@@ -27,7 +28,12 @@ func main() {
 		if i == 2 {
 			break
 		}
-
 	}
 
+	/*
+		this is main goroutine
+		this is a newTask
+		this is a newTask
+		this is main goroutine
+	*/
 }

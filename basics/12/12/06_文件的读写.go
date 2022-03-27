@@ -59,8 +59,10 @@ func ReadFileLine(path string) {
 	}
 	//关闭文件
 	defer f.Close()
+
 	//新建一个缓冲区。把内容先放着缓冲里面
 	r := bufio.NewReader(f)
+
 	for {
 		//遇到\n结束读取，但是\n也进入缓冲区
 		buf, err := r.ReadBytes('\n')
@@ -76,6 +78,8 @@ func ReadFileLine(path string) {
 }
 
 func main() {
+	// 可以使用绝对路径
+	//path := "/Users/liaojiayun/Desktop/gogo_learn/basics/12/12/demo.txt"
 	path := "./demo.txt"
 	//WriteFile(path)
 	//ReadFileLine(path)
