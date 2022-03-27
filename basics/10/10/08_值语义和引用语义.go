@@ -10,7 +10,7 @@ type Worker1 struct {
 	age  int
 }
 
-//接收者为普通变量，非指针，值语义，一份拷贝
+// SetWorkerInfo 接收者为普通变量，非指针，值语义，一份拷贝
 func (w Worker1) SetWorkerInfo(n string, s byte, a int) {
 	w.name = n
 	w.sex = s
@@ -19,7 +19,7 @@ func (w Worker1) SetWorkerInfo(n string, s byte, a int) {
 	fmt.Printf("SetWorkerInfo &p=%p\n", &w)
 }
 
-//引用传递
+// SetWorkerPoint 引用传递
 func (w *Worker1) SetWorkerPoint(n string, s byte, a int) {
 	w.name = n
 	w.sex = s

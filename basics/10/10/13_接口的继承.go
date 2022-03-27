@@ -29,16 +29,16 @@ func main() {
 	var i Personer
 	s := &Student10{"mike", 7777}
 	i = s
-	i.sayHi()
-	i.sing("人民解放歌")
+	i.sayHi()       // Student10[mike,7777] sayHi
+	i.sing("人民解放歌") // student10在唱： 人民解放歌
 
 	var h Humaner01
 	h = s
-	h.sayHi()
+	h.sayHi() // Student10[mike,7777] sayHi
 
-	h = i //子接口可以赋值给父接口
-	h.sayHi()
+	h = i     // 子接口可以赋值给父接口
+	h.sayHi() // Student10[mike,7777] sayHi
 
-	//i = h //父接口定义变量不能给子接口
+	//i = h // 父接口定义变量不能给子接口
 
 }

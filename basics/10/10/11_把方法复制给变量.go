@@ -18,14 +18,14 @@ func (p *Person7) SetInfoPoint() {
 
 func main() {
 	p := Person7{"mike", 'm', 18}
-	fmt.Printf("main:%p,%v\n", &p, p)
+	fmt.Printf("main:%p,%v\n", &p, p) // main:0xc000136000,{mike 109 18}
 
-	p.SetInfoPoint() //传统的调用方式
+	p.SetInfoPoint() // 传统的调用方式 SetInfoPoint:0xc000136000,&{mike 109 18}
 
-	pFunc := p.SetInfoPoint //这个是方法值，调用函数时，无需传递接收者，
-	pFunc()
+	pFunc := p.SetInfoPoint // 这个是方法值，调用函数时，无需传递接收者，
+	pFunc()                 // SetInfoPoint:0xc000136000,&{mike 109 18}
 
-	pSetinfo := p.SetInfoValue
-	pSetinfo() //这个就等价于p.SetInfoValue()
+	pSetInfo := p.SetInfoValue
+	pSetInfo() // 这个就等价于p.SetInfoValue() // SetInfoPoint:0xc000136000,&{mike 109 18}
 
 }
