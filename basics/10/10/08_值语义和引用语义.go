@@ -30,13 +30,13 @@ func (w *Worker1) SetWorkerPoint(n string, s byte, a int) {
 func main() {
 
 	w1 := Worker1{"tom", 'm', 22}
-	fmt.Printf("&w1=%p\n", &w1)
+	fmt.Printf("&w1=%p\n", &w1) // &w1=0xc0000b4000
 	//w1.SetWorkerInfo("marry",'f',11)
 	//fmt.Printf("&w1=%p\n",&w1)
 
 	//(&w1).SetWorkerPoint("marry",'f',11)
-	w1.SetWorkerPoint("marry", 'f', 11)
-	fmt.Printf("&w1=%p\n", &w1)
-	fmt.Println(w1)
+	w1.SetWorkerPoint("marry", 'f', 11) // SetWorkerPoint &p=0xc0000b4000
+	fmt.Printf("&w1=%p\n", &w1)         // &w1=0xc0000b4000
+	fmt.Println(w1)                     // {marry 102 11}
 
 }

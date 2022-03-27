@@ -16,13 +16,13 @@ type Student2 struct {
 }
 
 func main() {
-	//声明（定义一个变量）
+	// 声明（定义一个变量）
 	var s Student2
-	//就近原则：如果能在本作用域找到此成员，就操作此成员，如果找不到，就找到继承的字段
+	// 就近原则：如果能在本作用域找到此成员，就操作此成员，如果找不到，就找到继承的字段
 	s.name = "zhangsan" //Student的name
 	s.sex = 'm'
 	s.age = 18
 	s.addr = "bj"
-	fmt.Printf("s=%+v\n", s)
+	fmt.Printf("s=%+v\n", s) // s={Person2:{name: sex:109 age:18} id:0 addr:bj name:zhangsan}
 
 }

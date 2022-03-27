@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type Person1 struct {
-	name string //名字
+	name string // 名字
 	sex  byte   // 姓名
 	age  int    // 年龄
 }
@@ -24,11 +24,11 @@ func main() {
 	s1.id = 7777
 	s1.addr = "sh"
 
-	//对象操作匿名字段方式二
+	// 对象操作匿名字段方式二
 	s1.Person1 = Person1{"tom", 'm', 19}
 
-	fmt.Println(s1.Person1.name)
-	fmt.Println(s1.name) // s1.Person1.name == s1.name
-	fmt.Println("s1=", s1)
+	fmt.Println(s1.Person1.name) // tom
+	fmt.Println(s1.name)         // s1.Person1.name == s1.name
+	fmt.Println("s1=", s1)       // s1= {{tom 109 19} 7777 sh}
 
 }

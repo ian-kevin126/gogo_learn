@@ -22,7 +22,7 @@ func main() {
 	p1.sex = 'm'
 	p1.age = 18
 	p1.addr = "bj"
-	fmt.Println("s=", s)
+	fmt.Println("s=", s) // s= {1 jack 109 18 bj}
 
 	p2 := new(Student2) //new 地址
 	p2.id = 1
@@ -30,6 +30,6 @@ func main() {
 	p2.sex = 'M'
 	p2.age = 18
 	p2.addr = "bj"
-	fmt.Println("p2=", p2)
+	fmt.Println("p2=", p2) // p2= &{1 mike 77 18 bj}
 
 }

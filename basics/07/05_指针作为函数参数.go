@@ -10,6 +10,5 @@ func main() {
 	a, b := 10, 20
 	swap1(&a, &b)
 
-	fmt.Printf("main: a= %d,b=%d\n", a, b)
-
+	fmt.Printf("main: a= %d,b=%d\n", a, b) // a=20,b=10
 }

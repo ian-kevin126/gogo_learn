@@ -8,11 +8,12 @@ func main() {
 	b := [5]int{1, 2, 3, 4, 5}
 	c := [5]int{1, 2, 3}
 
-	fmt.Println("a==b", a == b)
-	fmt.Println("a==c", a == c)
+	fmt.Println("a==b", a == b) // a==b true
+	fmt.Println("a==c", a == c) // a==c false
+
 	//同类型的数组可以赋值
 	var d [5]int
 	d = c
-	fmt.Println("d=", d)
+	fmt.Println("d=", d) // d= [1 2 3 0 0]
 
 }

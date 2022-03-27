@@ -16,9 +16,9 @@ type Student5 struct {
 
 func main() {
 	s1 := Student5{&Person5{"mike", 'm', 18}, 777, "bj"}
-	fmt.Printf("s1=%+v\n", s1)
-	fmt.Println(s1.Person5.name)
-	fmt.Println(s1.name)
+	fmt.Printf("s1=%+v\n", s1)   // s1={Person5:0xc0000b4000 id:777 addr:bj}
+	fmt.Println(s1.Person5.name) // mike
+	fmt.Println(s1.name)         // mike
 
 	//先定义变量
 	var s2 Student5
@@ -28,6 +28,6 @@ func main() {
 	s2.age = 18
 	s2.id = 2222
 	s2.addr = "bj"
-	fmt.Println(s2.name, s2.sex, s2.age, s2.id, s2.addr)
+	fmt.Println(s2.name, s2.sex, s2.age, s2.id, s2.addr) // tom 109 18 2222 bj
 
 }

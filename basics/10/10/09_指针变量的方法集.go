@@ -28,7 +28,7 @@ func main() {
 	w.SetWorkerInfo()*/
 
 	w := Worker2{"mike", 'm', 19}
-	w.SetWorkerPoint() //w--->(&p)
-	w.SetWorkerInfo()
+	w.SetWorkerPoint() //w--->(&p) SetWorkerPoint &p=0xc00012a000
+	w.SetWorkerInfo()  // SetWorkerInfo &p=0xc00012a020
 
 }

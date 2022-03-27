@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-//定义一个结构体
+// Student 定义一个结构体
 type Student struct {
 	id   int
 	name string
@@ -30,6 +30,5 @@ func main() {
 	s.age = 18
 	s.addr = "bj"
 
-	fmt.Println("s=", s)
-
+	fmt.Println("s=", s) // s= {1 mike 109 18 bj}
 }

@@ -40,6 +40,6 @@ func main() {
 	//定义一个结构体变量
 	var p Worker
 	//(&p).SetInfo("tom",'f',33)
-	p.SetInfo("tom", 'f', 33)
-	p.PrintInfo()
+	p.SetInfo("tom", 'f', 33) // SetInfo p= &{tom 102 33}
+	p.PrintInfo()             // a= {tom 102 33}
 }
