@@ -29,11 +29,11 @@ func main() {
 	for index, data := range i {
 		switch value := data.(type) {
 		case int:
-			fmt.Printf("i[%d] 类型为int，内容为%d\n", index, value)
+			fmt.Printf("i[%d] 类型为int，内容为%d\n", index, value) // i[0] 类型为int，内容为1
 		case string:
-			fmt.Printf("i[%d] 类型为string，内容为%s\n", index, value)
+			fmt.Printf("i[%d] 类型为string，内容为%s\n", index, value) // i[1] 类型为string，内容为hello go
 		case Student11:
-			fmt.Printf("i[%d]类型为student，内容为name=%s,id=%d\n", index, value.name, value.id)
+			fmt.Printf("i[%d]类型为student，内容为name=%s,id=%d\n", index, value.name, value.id) // i[2]类型为student，内容为name=mike,id=7777
 		}
 	}
 

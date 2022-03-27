@@ -17,5 +17,4 @@ func main() {
 	fmt.Println("请输入一个a")
 	fmt.Scan(&a)
 	fmt.Println("a=", a)
-
 }

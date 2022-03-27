@@ -18,5 +18,20 @@ func main() {
 		fmt.Println("err=", err)
 		return
 	}
+
 	fmt.Println("result=", string(result))
+
+	/*
+		result= {
+		        "company": "zhczGO",
+		        "isok": true,
+		        "price": 99,
+		        "subjects": [
+		                "go",
+		                "fabric",
+		                "python",
+		                "Test"
+		        ]
+		}
+	*/
 }

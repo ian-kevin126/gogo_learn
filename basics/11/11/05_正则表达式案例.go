@@ -12,6 +12,5 @@ func main() {
 	reg := regexp.MustCompile(`\d+\.\d+`) //4.5  \.
 	//result := reg.FindAllString(buf,-1)
 	result := reg.FindAllStringSubmatch(buf, -1)
-	fmt.Println("result=", result)
-
+	fmt.Println("result=", result) // result= [[43.14] [1.23] [8.9] [6.66] [7.8]]
 }

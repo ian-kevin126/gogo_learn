@@ -7,16 +7,16 @@ import (
 
 func main() {
 	jsonbuff := `{
-	"company": "zhczGO",
-	"isok": true,
-	"price": 99,
-	"subjects": [
-		"go",
-		"fabric",
-		"python",
-		"Test"
-	]
-}`
+		"company": "zhczGO",
+		"isok": true,
+		"price": 99,
+		"subjects": [
+			"go",
+			"fabric",
+			"python",
+			"Test"
+		]
+	}`
 
 	//创建一个map
 	m := make(map[string]interface{}, 4)
@@ -27,6 +27,7 @@ func main() {
 		return
 	}
 	fmt.Printf("m=%+v/n", m)
+	// m=map[company:zhczGO isok:true price:99 subjects:[go fabric python Test]]/nmap[company]的值类型为string，value=zhczGO
 
 	//var str string
 	//str = m["company"]//err 无法转换
@@ -47,5 +48,9 @@ func main() {
 			fmt.Printf("map[%s]的值类型为interface{}，value=%v\n", key, data)
 		}
 	}
+
+	//map[isok]的值类型为bool，value=true
+	//map[price]的值类型为float64，value=99.000000
+	//map[subjects]的值类型为interface{}，value=[go fabric python Test]
 
 }

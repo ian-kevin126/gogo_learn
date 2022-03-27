@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-//文件的写入
+// WriteFile 文件的写入
 func WriteFile(path string) {
 	//打开文件，新建文件
 	f, err := os.Create(path)
@@ -32,7 +32,7 @@ func WriteFile(path string) {
 
 }
 
-//文件读取
+// ReadFile 文件读取
 func ReadFile(path string) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -50,7 +50,7 @@ func ReadFile(path string) {
 	fmt.Println("buf=", string(buf[:n]))
 }
 
-//每次读取一行
+// ReadFileLine 每次读取一行
 func ReadFileLine(path string) {
 	f, err := os.Open(path)
 	if err != nil {

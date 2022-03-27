@@ -1,8 +1,8 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"github.com/kataras/iris/core/errors"
 )
 
 func MyDiv(a, b int) (result int, err error) {
@@ -18,7 +18,7 @@ func MyDiv(a, b int) (result int, err error) {
 func main() {
 	result, err := MyDiv(10, 0)
 	if err != nil {
-		fmt.Println("err", err)
+		fmt.Println("err", err) // err 分母不为零
 	} else {
 		fmt.Println("result=", result)
 	}

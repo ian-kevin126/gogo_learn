@@ -25,4 +25,9 @@ func main() {
 	testb()
 	testc()
 
+	/*
+		aaaaaaaaaaaaaaaaaa
+		bbbbbbbbbbbbbbbbbb
+		panic: this is a panic test
+	*/
 }
