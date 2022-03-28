@@ -16,4 +16,11 @@ func main() {
 		}
 	}()
 
+	// 延迟主函数的结束
+	time.Sleep(time.Second)
+
+	/*
+		子协程 i= 1
+		子协程 i= 2
+	*/
 }

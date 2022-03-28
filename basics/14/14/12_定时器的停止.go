@@ -8,10 +8,10 @@ import (
 func main() {
 	timer := time.NewTimer(3 * time.Second)
 	ok := timer.Reset(1 * time.Second) //把以前3秒重置1s
-	fmt.Println("ok=", ok)
+	fmt.Println("ok=", ok)             // ok= true
 
 	<-timer.C
-	fmt.Println("时间到")
+	fmt.Println("时间到") // 时间到
 }
 
 /*func main(){

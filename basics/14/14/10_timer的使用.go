@@ -13,4 +13,9 @@ func main() {
 		<-timer.C
 		fmt.Println("时间到")
 	}
+
+	/*
+		时间到
+		fatal error: all goroutines are asleep - deadlock!
+	*/
 }

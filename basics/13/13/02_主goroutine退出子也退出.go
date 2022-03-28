@@ -25,4 +25,11 @@ func main() {
 			break
 		}
 	}
+
+	/*
+		main i= 1
+		子协程 i= 1
+		子协程 i= 2
+		main i= 2
+	*/
 }

@@ -8,7 +8,7 @@ import (
 //定义全局的变量，创建一个channel
 var ch = make(chan int)
 
-//定义一个打印机，参数字符串，按照每个字符打印
+// Printer 定义一个打印机，参数字符串，按照每个字符打印
 func Printer(str string) {
 	for _, data := range str {
 		fmt.Printf("%c", data)
@@ -21,7 +21,6 @@ func Printer(str string) {
 func Person1() {
 	Printer("hello")
 	ch <- 66666
-
 }
 
 func Person2() {

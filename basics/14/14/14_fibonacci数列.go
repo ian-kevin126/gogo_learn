@@ -5,7 +5,7 @@ import "fmt"
 func fibonacci(ch chan<- int, quit <-chan bool) {
 	x, y := 1, 1
 	for {
-		//监听channel数据流动
+		// 监听channel数据流动
 		select {
 		case ch <- x:
 			x, y = y, x+y
@@ -27,10 +27,22 @@ func main() {
 			num := <-ch
 			fmt.Println(num)
 		}
+
 		quit <- true
 
 	}()
 
 	fibonacci(ch, quit)
 
+	/*
+		1
+		1
+		2
+		3
+		5
+		8
+		13
+		21
+		flag= true
+	*/
 }

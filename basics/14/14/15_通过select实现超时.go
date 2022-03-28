@@ -5,6 +5,17 @@ import (
 	"time"
 )
 
+/*
+select的作用：
+Go里面提供一个关键字select，通过select可以监听channel上的数据流动。
+
+select的写法与switch非常类似，由select开始一个新的选择快，每个选择条件由case语句来描述。
+
+与switch语句可以选择任何可使用相等比较的条件相比，select有比较多的限制，其中最大的一条限制就是：
+—— 每个case语句里必须是一个IO操作。
+
+*/
+
 func main() {
 	ch := make(chan int)
 	quit := make(chan bool)

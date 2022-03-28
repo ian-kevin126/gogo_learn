@@ -7,7 +7,7 @@ import (
 
 func test() {
 	defer fmt.Println("ccccccc")
-	//return  //终止函数
+	//return //终止函数
 	runtime.Goexit() //终止所有的协程
 	fmt.Println("ddddddddd")
 }
@@ -24,4 +24,15 @@ func main() {
 
 	}
 
+	/*
+
+		return：
+			aaaaaaa
+			ccccccc
+			bbbbbbbb
+
+		goexit：
+			aaaaaaa
+			ccccccc
+	*/
 }

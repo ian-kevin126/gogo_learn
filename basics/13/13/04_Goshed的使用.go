@@ -13,11 +13,20 @@ func main() {
 	}()
 
 	for i := 0; i < 2; i++ {
+		// 让出时间片，先让别的协程执行，它执行完，最回来执行此协程
 		runtime.Gosched()
 		fmt.Println("hello")
-		//让出时间片，先让别的协程执行，它执行完，最回来执行此协程
 
 		//time.Sleep(time.Second)
 	}
 
+	/*
+		go
+		go
+		go
+		go
+		go
+		hello
+		hello
+	*/
 }

@@ -15,10 +15,12 @@ func newTask() {
 func main() {
 	go newTask() // go 关键字就新建一个协程，新建一个任务
 
-	/*for{
-		fmt.Println("this is main goroutine")
-		time.Sleep(time.Second)
-	}*/
+	/*
+		for {
+			fmt.Println("this is main goroutine")
+			time.Sleep(time.Second)
+		}
+	*/
 	i := 0
 
 	for {
