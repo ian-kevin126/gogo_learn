@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-
 	listener, err := net.Listen("tcp", ":8000")
 	if err != nil {
 		fmt.Println("listener err = ", err)
@@ -24,7 +23,6 @@ func main() {
 	defer conn.Close()
 
 	//接收客户端数据
-
 	buf := make([]byte, 1024)
 	n, err := conn.Read(buf)
 	if err != nil {

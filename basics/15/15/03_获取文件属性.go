@@ -14,6 +14,7 @@ func main() {
 		fmt.Println("useage:xxx file")
 		return
 	}
+
 	fileName := list[1]
 
 	info, err := os.Stat(fileName)

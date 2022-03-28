@@ -16,9 +16,8 @@ func main() {
 	defer conn.Close()
 
 	//从键盘输入 我给它一个协程
-
 	go func() {
-		//从键盘输入，给服务器发送内容
+		// 从键盘输入，给服务器发送内容
 		str := make([]byte, 1024)
 		for {
 			n, err := os.Stdin.Read(str) //从键盘输入，放入到str里面
@@ -26,12 +25,12 @@ func main() {
 				fmt.Println("os.stdin.err=", err)
 				return
 			}
-			//把内容发给服务器
+			// 把内容发给服务器
 			conn.Write(str[:n])
 		}
 	}()
 
-	//接收服务器回复的数据
+	// 接收服务器回复的数据
 	buf := make([]byte, 1024)
 	for {
 		n, err := conn.Read(buf) //接收服务器请求
@@ -39,7 +38,7 @@ func main() {
 			fmt.Println("conn.Read err=", err)
 			return
 		}
-		fmt.Println(string(buf[0:n]))
+		fmt.Println("客户端读取服务端返回的数据：", string(buf[0:n]))
 	}
 
 }

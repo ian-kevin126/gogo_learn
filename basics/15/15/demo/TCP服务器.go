@@ -8,16 +8,17 @@ import (
 )
 
 func HandleConn(conn net.Conn) {
-	//函数调用完毕，自动关闭conn
+	// 函数调用完毕，自动关闭conn
 	defer conn.Close()
 
-	//获取客户端网络地址信息
+	// 获取客户端网络地址信息
 	addr := conn.RemoteAddr().String()
-	fmt.Println(addr, " connect sucessful")
+	fmt.Println(addr, " connect successful")
 	buf := make([]byte, 2048)
 
 	for {
 		n, err := conn.Read(buf)
+		fmt.Println("nnnn", n) // 返回的是客户端输入的字符长度
 		if err != nil {
 			fmt.Println("err=", err)
 			return
@@ -44,6 +45,7 @@ func main() {
 		return
 	}
 	defer listener.Close()
+
 	//接收多个用户
 	for {
 		conn, err := listener.Accept()
@@ -51,6 +53,7 @@ func main() {
 			fmt.Println("err=", err)
 			return
 		}
+
 		//处理用户请求，新建立一个协程
 		go HandleConn(conn)
 	}

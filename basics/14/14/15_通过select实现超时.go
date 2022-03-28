@@ -25,6 +25,7 @@ func main() {
 			select {
 			case num := <-ch:
 				fmt.Println("num=", num)
+				// 超时执行语句（超过3s没有人读取ch里面的数据，就执行超时逻辑）
 			case <-time.After(3 * time.Second):
 				fmt.Println("超时")
 				quit <- true
