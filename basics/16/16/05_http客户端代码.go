@@ -16,7 +16,7 @@ func main() {
 
 	defer resp.Body.Close()
 	fmt.Println("status=", resp.Status)
-	fmt.Println("statuscode=", resp.StatusCode)
+	fmt.Println("statusCode=", resp.StatusCode)
 	fmt.Println("header=", resp.Header)
 
 	//fmt.Println("body=",resp.Body)
@@ -33,6 +33,14 @@ func main() {
 		}
 		temp += string(buf[:n])
 	}
+
 	fmt.Println("tem=", temp)
+	/*
+		status= 200 OK
+		statusCode= 200
+		header= map[Content-Length:[20] Content-Type:[text/html; charset=utf-8] Date:[Mon, 28 Mar 2022 09:32:49 GMT]]
+		read err= EOF
+		tem= <h1>hello world</h1>
+	*/
 
 }
