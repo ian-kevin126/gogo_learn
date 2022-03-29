@@ -1,0 +1,23 @@
+{
+  "app_name": "gin_api_pro",
+  "app_mode": "debug",
+  "app_host": "localhost",
+  "app_port": "8090",
+  "sms": {
+    "sign_name": "线上餐厅",
+    "template_code": "SMS_211221",
+    "app_key": "dsasadadasdasd",
+    "app_secret": "dsadsadsadasd",
+    "region_id": "dsaasdasd"
+  },
+  "database": {
+    "driver": "mysql",
+    "user": "root",
+    "password": "ljy760155",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "db_name": "ginDemo",
+    "charset": "utf8",
+    "show_sql": true
+  }
+}
